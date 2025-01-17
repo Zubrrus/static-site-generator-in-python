@@ -34,6 +34,19 @@ def generate_page(from_path, template_path, dest_path):
         print(e)
     fid.close()
 
+def generate_pages_recursive(dir_path_content, template_path, dest_dir_path):
+    items = os.listdir(dir_path_content)
+    for item in items:
+        from_path = os.path.join(dir_path_content, item)
+        if os.path.isfile(from_path):
+            dest_path = os.path.join(dest_dir_path, "index.html")
+            generate_page(from_path, template_path, dest_path)
+        else:
+            new_dest_dir_path = os.path.join(dest_dir_path, item)
+            os.mkdir(new_dest_dir_path)
+            generate_pages_recursive(from_path, template_path, new_dest_dir_path)
+            
+
 def my_copy(src, dst):
     items = os.listdir(src)
     for item in items:
@@ -58,9 +71,11 @@ def main():
         shutil.rmtree(dst)
     os.mkdir(dst)
     my_copy(src, dst)
-    from_path = os.path.join(cwd, "content/index.md")
+    dir_path_content = os.path.join(cwd, "content")
     template_path = os.path.join(cwd, "template.html")
-    dest_path = os.path.join(dst, "index.html")
-    generate_page(from_path, template_path, dest_path)
+    dest_dir_path = dst
+    # generate_page(from_path, template_path, dest_path)
+    generate_pages_recursive(dir_path_content, template_path, dest_dir_path)
+
 
 main()
