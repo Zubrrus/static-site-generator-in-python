@@ -280,7 +280,7 @@ class TestTextNode(unittest.TestCase):
             ],
             None
         )
-        self.assertEqual(res, out) # cool
+        self.assertEqual(res, out)
 
     def test_QUOTE_markdown_to_html_node1(self):
         markdown = ">From iron cometh strength!\n>From strength cometh will!\n" +\
@@ -301,7 +301,7 @@ class TestTextNode(unittest.TestCase):
             ],
             None
         )
-        self.assertEqual(res, out) # cool
+        self.assertEqual(res, out)
 
     def test_QUOTE_markdown_to_html_node2(self):
         markdown = ">From **iron** cometh strength!\n>From strength cometh will!\n" +\
@@ -326,7 +326,7 @@ class TestTextNode(unittest.TestCase):
             ],
             None
         )
-        self.assertEqual(res, out) # cool
+        self.assertEqual(res, out)
 
     def test_CODE_markdown_to_html_node(self):
         markdown = "```for item in items:\nprint(item)```"
@@ -344,7 +344,7 @@ class TestTextNode(unittest.TestCase):
                 )
             ]
         )
-        self.assertEqual(res, out) # cool
+        self.assertEqual(res, out)
 
     def test_ORDERED_LIST_markdown_to_html_node(self):
         markdown = "1. **sun**\n2. **moon**"
@@ -362,7 +362,7 @@ class TestTextNode(unittest.TestCase):
                 )
             ]
         )
-        self.assertEqual(res, out) # cool
+        self.assertEqual(res, out)
 
     def test_UNORDERED_list_markdown_to_html_node1(self):
         markdown = "+ **sun**\n+ **moon**"
@@ -380,7 +380,7 @@ class TestTextNode(unittest.TestCase):
                 )
             ]
         )
-        self.assertEqual(res, out) # cool
+        self.assertEqual(res, out)
 
     def test_UNORDERED_list_markdown_to_html_node2(self):
         markdown = "* **sun**\n* **moon**"
@@ -398,7 +398,7 @@ class TestTextNode(unittest.TestCase):
                 )
             ]
         )
-        self.assertEqual(res, out) # cool
+        self.assertEqual(res, out)
 
     def test_UNORDERED_list_markdown_to_html_node3(self):
         markdown = "- **sun**\n- **moon**"
@@ -416,7 +416,7 @@ class TestTextNode(unittest.TestCase):
                 )
             ]
         )
-         # cool
+        self.assertEqual(res, out)
 
     def test_PARAGRAPH_list_markdown_to_html_node(self):
         markdown = "1. **sun**\n- **moon**\nsample text"
@@ -437,7 +437,7 @@ class TestTextNode(unittest.TestCase):
                 )
             ]
         )
-        self.assertEqual(res, out) # cool
+        self.assertEqual(res, out)
 
     def test_extract_title1(self):
         markdown = "# title1\n\n## title2\n\n### title3\n\nsome sample text\nanother line"

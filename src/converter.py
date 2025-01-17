@@ -63,7 +63,7 @@ re_count_level = re.compile(
     r"^#{1,6}? "
 )
 re_strip_QUOTE_enum = re.compile(
-    r"^\>(.*)", 
+    r"^\>\s(.*)", 
     re.MULTILINE
 )
 re_strip_OL_enum = re.compile(
@@ -258,7 +258,7 @@ def heading_block_to_HTMLNode(block):
     return ParentNode(f"h{level}", text_to_children(block.removeprefix("#" * level + " ")))
 
 def code_block_to_HTMLNode(block):
-    lines = block.removeprefix("```").removesuffix("```").split("\n")
+    lines = block.lstrip("`\n").rstrip("\n`").split("\n")
     return ParentNode("code", lines_to_children(lines, "pre"))
 
 def quote_block_to_HTMLNode(block):
@@ -305,3 +305,6 @@ def extract_title(markdown):
     if len(res) > 1:
         raise Exception("multiple h1 header found")
     return res[0]
+
+def to_html(markdown):
+    return markdown_to_html_node(markdown).to_html()
