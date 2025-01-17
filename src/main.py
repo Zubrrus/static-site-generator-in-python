@@ -74,7 +74,6 @@ def main():
     dir_path_content = os.path.join(cwd, "content")
     template_path = os.path.join(cwd, "template.html")
     dest_dir_path = dst
-    # generate_page(from_path, template_path, dest_path)
     generate_pages_recursive(dir_path_content, template_path, dest_dir_path)
 
 
